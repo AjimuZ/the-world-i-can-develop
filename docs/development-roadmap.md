@@ -20,8 +20,8 @@ in `analysis.md §13.2`).
 
 - One coherent change per phase. Do not mix backend, frontend, and docs work
   unless the phase explicitly calls for it.
-- Work on a dedicated branch: `phase-NN-short-title`.
-- Never push directly to `main`.
+- Work on the single `main` branch; do not create per-phase branches.
+- Do not commit or push without explicit manual approval.
 - Tests or checks must pass before closing a phase.
 - Update the relevant documentation when architecture, Rune, Lyra, AI
   orchestration, memory, or public presentation changes.
@@ -35,7 +35,7 @@ in `analysis.md §13.2`).
 | --- | --- | --- |
 | P0 | Repository and Claude Code setup | ✅ Done |
 | P1 | Repository hygiene baseline | ✅ Done |
-| P2 | Reconcile roadmap and pin toolchain | In Progress |
+| P2 | Reconcile roadmap and pin toolchain | ✅ Done |
 | P3 | Angular app scaffold | Frontend |
 | P4 | RPG layout placeholder panels | Frontend |
 | P5 | Spring Boot scaffold and health endpoint | Backend |
@@ -81,8 +81,6 @@ in `analysis.md §13.2`).
 generates build artifacts. These files must exist before `ng new` or Spring
 Initializr runs, so that generated output is never accidentally committed.
 
-**Branch:** `phase-01-hygiene`
-
 **Files to create or modify:**
 - `.gitignore` — Node, Angular, Java/Maven, IDE, env, OS rules.
 - `LICENSE` — MIT.
@@ -121,8 +119,6 @@ line-ending normalization, POSIX shell portability.
 **Goal:** Replace the three conflicting roadmaps with this single document;
 record the four toolchain decisions as a new ADR; update `docs/decisions.md`.
 
-**Branch:** `phase-02-roadmap`
-
 **Files to create or modify:**
 - `docs/development-roadmap.md` — this file (already the canonical version).
 - `docs/decisions.md` — add pinned versions row.
@@ -137,8 +133,9 @@ the decisions table includes concrete version numbers; ADR 0005 is accepted.
 - `docs/decisions.md` contains Java 21, Maven, Angular standalone, MIT.
 - ADR 0005 exists and its status is Accepted.
 
-**Status:** In Progress — `docs/development-roadmap.md` rewritten (commit `3187088`).
-Still pending: `docs/decisions.md` version rows and `docs/adr/0005-toolchain-versions.md`.
+**Status:** ✅ Done — `docs/development-roadmap.md` rewritten (commit `3187088`);
+`docs/decisions.md` version rows added (Java 21 LTS, Maven, Angular standalone + signals,
+MIT) and `docs/adr/0005-toolchain-versions.md` accepted.
 
 **Suggested commit message:** `Reconcile roadmap and pin toolchain versions`
 
@@ -152,8 +149,6 @@ control.
 **Goal:** Initialize the Angular workspace under `frontend/` using the
 confirmed stack (Angular latest stable, standalone components, signals,
 TypeScript, SCSS).
-
-**Branch:** `phase-03-angular-scaffold`
 
 **Files to create or modify:**
 - `frontend/` — full Angular workspace output from `ng new`.
@@ -181,8 +176,6 @@ compiler options, build and test commands.
 structured layout that shows one empty component per panel defined in
 `docs/gameplay-systems.md`. The screen must look like a text-RPG interface,
 not a blank page and not a chat window.
-
-**Branch:** `phase-04-rpg-layout`
 
 **Components to create (all empty placeholders):**
 - `GameScreenComponent` — root layout container.
@@ -220,8 +213,6 @@ presentational components, CSS layout for multi-panel UIs.
 **Goal:** Initialize the Spring Boot project under `backend/` using Java 21
 and Maven. Expose a single `GET /api/health` endpoint that returns HTTP 200.
 
-**Branch:** `phase-05-backend-scaffold`
-
 **Files to create or modify:**
 - `backend/pom.xml` — Spring Boot parent, Java 21, web starter, test starter.
 - `backend/src/main/java/…/Application.java` — main entry point.
@@ -250,8 +241,6 @@ Maven wrapper, Spring Boot auto-configuration.
 any real feature. Wire up CORS on the backend and a dev proxy on the frontend
 so a simple HTTP call from the Angular app reaches the Spring Boot server.
 
-**Branch:** `phase-06-integration-smoke`
-
 **Files to create or modify:**
 - `backend/src/main/java/…/config/CorsConfig.java` — allow `localhost:4200`.
 - `frontend/proxy.conf.json` — proxy `/api` to `http://localhost:8080`.
@@ -279,8 +268,6 @@ error handling, end-to-end wiring between two separate runtimes.
 **Goal:** Define a Docker Compose setup that starts PostgreSQL (with the
 `pgvector` extension available for future use). The Spring Boot backend must
 connect to this database on startup.
-
-**Branch:** `phase-07-docker-compose`
 
 **Files to create or modify:**
 - `docker-compose.yml` — PostgreSQL service using `pgvector/pgvector:pg16`
@@ -311,8 +298,6 @@ Spring Boot datasource configuration, Docker Compose service definitions.
 **Goal:** Define the four core domain entities (`Player`, `Campaign`,
 `SaveGame`, `Character`) with JPA and create their tables through versioned
 Flyway migrations. Prove persistence works with a repository integration test.
-
-**Branch:** `phase-08-game-entities`
 
 **Files to create or modify:**
 - `backend/src/main/java/…/domain/` — `Player`, `Campaign`, `SaveGame`,
@@ -345,8 +330,6 @@ Flyway migrations, persistence layer boundaries.
 creates a persisted game, and returns the game id. Add a start screen in the
 Angular frontend.
 
-**Branch:** `phase-09-new-game`
-
 **Files to create or modify:**
 - `backend/src/main/java/…/game/GameController.java` — POST /api/game/start.
 - `backend/src/main/java/…/game/GameService.java` — business logic.
@@ -377,8 +360,6 @@ end-to-end frontend-to-database integration.
 narrative (goddess grants Rune; Lyra is introduced). Render the text in the
 narrative panel component.
 
-**Branch:** `phase-10-narrative-intro`
-
 **Files to create or modify:**
 - `backend/src/main/java/…/narrative/NarrativeController.java` — GET endpoint.
 - `backend/src/main/resources/narrative/intro.txt` (or inline constant) —
@@ -405,8 +386,6 @@ delivery patterns, Angular data binding.
 **Goal:** Define an internal `LlmClient` interface and a `MockLlmClient`
 implementation that returns deterministic canned responses. The rest of the
 backend depends on the interface, never on Ollama directly. (ADR 0002.)
-
-**Branch:** `phase-11-llm-adapter`
 
 **Files to create or modify:**
 - `backend/src/main/java/…/ai/LlmClient.java` — interface with a single
@@ -438,8 +417,6 @@ dependencies, designing for testability.
 action and returns a mocked narrative response via `LlmClient`. Wire the
 frontend action input to append responses to the narrative panel.
 
-**Branch:** `phase-12-action-loop`
-
 **Files to create or modify:**
 - `backend/src/main/java/…/game/ActionController.java` — POST endpoint.
 - `backend/src/main/java/…/game/ActionService.java` — calls `LlmClient`.
@@ -468,8 +445,6 @@ reactive state updates in Angular.
 **Goal:** Enforce the core architectural rule (ADR 0003): AI responses may
 include a `proposedChanges` array, but only the backend service validates and
 applies permitted changes. Raw model output must never write to the database.
-
-**Branch:** `phase-13-state-validation`
 
 **Files to create or modify:**
 - `backend/src/main/java/…/ai/LlmResponse.java` — add `proposedChanges` list.
@@ -506,8 +481,6 @@ enforcement, auditing, designing against untrusted sources.
 endpoint that checks syntax, resource cost, player level, script complexity,
 target, and allowed effect. Wire the frontend Rune panel to show validation
 results. (ADR 0004.)
-
-**Branch:** `phase-14-rune-mvp`
 
 **MVP command set (example, to be confirmed):**
 ```
@@ -551,8 +524,6 @@ balancing through deterministic rules.
 into diegetic, in-world explanations. Wire the Lyra panel to display these
 explanations when a Rune command is invalid.
 
-**Branch:** `phase-15-lyra-mvp`
-
 **Files to create or modify:**
 - `backend/src/main/java/…/lyra/LyraService.java` — maps `RuneValidationResult`
   error codes to narrative explanations; rule-based first, mock LLM optional.
@@ -584,8 +555,6 @@ mapping technical errors to human-readable narratives.
 restart. Implement an append-only event log that records every meaningful
 action and its outcome.
 
-**Branch:** `phase-16-persistence`
-
 **Files to create or modify:**
 - `backend/src/main/java/…/save/SaveService.java` — save and load current
   game state.
@@ -615,8 +584,6 @@ reconstruction, narrative continuity through data.
 **Goal:** Implement `OllamaLlmClient` that calls a locally running Ollama
 instance over HTTP. Profile-switched: the mock stays the default for tests;
 the Ollama adapter activates via the `ollama` Spring profile.
-
-**Branch:** `phase-17-ollama-adapter`
 
 **Files to create or modify:**
 - `backend/src/main/java/…/ai/OllamaLlmClient.java` — HTTP client calling
@@ -651,8 +618,6 @@ WireMock testing, handling latency and errors from an external service.
 **Goal:** Make the repository recruiter-ready and reproducible from a fresh
 clone. Document the full local setup, add an architecture diagram, and verify
 the public tone throughout.
-
-**Branch:** `phase-18-polish`
 
 **Files to create or modify:**
 - `README.md` — complete setup instructions (prerequisites, Docker Compose,

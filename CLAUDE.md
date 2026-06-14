@@ -15,7 +15,7 @@
 - Work in small, testable, reviewable micro-phases.
 - Do not run destructive commands such as hard resets, forced cleans, or broad deletes.
 - Do not run `git commit` or `git push` autonomously. Prepare clear commit message suggestions and wait for explicit manual approval.
-- Do not push directly to `main` or `master`.
+- Work on the single `main` branch; do not create per-phase branches.
 - Always separate AI-generated narrative from deterministic game state.
 - Update docs when changing architecture, gameplay rules, Rune, Lyra, AI orchestration, memory, or public presentation.
 - End each phase with a clear English commit message suggestion.

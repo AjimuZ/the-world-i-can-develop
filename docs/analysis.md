@@ -954,7 +954,7 @@ Maintain control over the code and make the project presentable.
 
 * repository initialization;
 * small and descriptive commits;
-* feature branches;
+* single-branch workflow;
 * polished README;
 * technical documentation;
 * roadmap;
@@ -2296,8 +2296,8 @@ Each document should use:
 
 ### 12.7 Defined Git Workflow
 
-1. Work on a dedicated branch for the phase, for example `phase-03-backend-shell`.
-2. Avoid direct pushes to `main`.
+1. Work on the single `main` branch; do not create per-phase branches.
+2. Commit and push only after explicit manual approval.
 3. Create small and readable commits.
 4. Use English messages, for example `Add health endpoint`.
 5. Update `CHANGELOG.md` only for significant milestones.
@@ -2307,6 +2307,10 @@ Each document should use:
 ---
 
 ## 13. Development Roadmap
+
+> **Superseded.** This section is kept for historical context only. The single
+> canonical roadmap is `docs/development-roadmap.md`; the tables in §13.1 and the
+> macro phases in §13.2 are no longer maintained.
 
 ### 13.1 Operational Micro-Phase Roadmap
 
