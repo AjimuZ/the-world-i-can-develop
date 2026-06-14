@@ -2,6 +2,8 @@
 
 The game should feel like a text RPG product rather than a simple chat.
 
+Visual direction, palette, typography, and panel styling are defined in the [UI Style Guide](ui-style-guide.md).
+
 ## Core Loop
 
 1. The player reads the current narrative and world state.

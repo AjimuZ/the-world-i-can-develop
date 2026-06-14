@@ -59,6 +59,7 @@ This repository is in its initial setup phase. It currently contains the documen
 - [Memory System](docs/memory-system.md)
 - [Rune System](docs/rune-system.md)
 - [Lyra Assistant](docs/lyra-assistant.md)
+- [UI Style Guide](docs/ui-style-guide.md)
 - [Development Roadmap](docs/development-roadmap.md)
 - [Learning Path](docs/learning-path.md)
 - [Architecture Decisions](docs/decisions.md)
