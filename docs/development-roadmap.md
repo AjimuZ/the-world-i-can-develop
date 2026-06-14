@@ -31,11 +31,11 @@ in `analysis.md §13.2`).
 
 ## Phase overview
 
-| Phase | Title | Type |
+| Phase | Title | Status |
 | --- | --- | --- |
 | P0 | Repository and Claude Code setup | ✅ Done |
-| P1 | Repository hygiene baseline | Hygiene |
-| P2 | Reconcile roadmap and pin toolchain | Documentation |
+| P1 | Repository hygiene baseline | ✅ Done |
+| P2 | Reconcile roadmap and pin toolchain | In Progress |
 | P3 | Angular app scaffold | Frontend |
 | P4 | RPG layout placeholder panels | Frontend |
 | P5 | Spring Boot scaffold and health endpoint | Backend |
@@ -61,7 +61,7 @@ in `analysis.md §13.2`).
 
 ### P0 — Repository and Claude Code Setup
 
-**Status:** ✅ Done (commits: `Initial commit`, `Init repo structure and Claude Code setup`)
+**Status:** ✅ Done — commits `b592dae` and `1f96edf`.
 
 **What was delivered:**
 - `docs/` skeleton with vision, MVP scope, architecture, gameplay, AI, memory,
@@ -106,6 +106,9 @@ editors and operating systems.
 - Run `git check-ignore .env.example` → must NOT be echoed (file stays tracked).
 - Edit any file → auto-format hook runs without the `printf` error.
 
+**Status:** ✅ Done — commit `59809a1` on `main`. Also includes `.gitattributes`
+(LF normalization) and the `printf` bug-fix in `auto-format-after-edit.sh`.
+
 **Suggested commit message:** `Add gitignore, license, and editor config`
 
 **Learning:** repository hygiene, ignore-rule ordering, OSS licensing,
@@ -133,6 +136,9 @@ the decisions table includes concrete version numbers; ADR 0005 is accepted.
 - Search for "Phase 3" or "phase 7" in docs — only this file should match.
 - `docs/decisions.md` contains Java 21, Maven, Angular standalone, MIT.
 - ADR 0005 exists and its status is Accepted.
+
+**Status:** In Progress — `docs/development-roadmap.md` rewritten (commit `3187088`).
+Still pending: `docs/decisions.md` version rows and `docs/adr/0005-toolchain-versions.md`.
 
 **Suggested commit message:** `Reconcile roadmap and pin toolchain versions`
 
