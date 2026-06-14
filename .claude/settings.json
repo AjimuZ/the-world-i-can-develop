@@ -6,11 +6,26 @@
         "hooks": [
           {
             "type": "command",
+            "command": "node .claude/hooks/confirm-git-commit-push.cjs",
+            "if": "Bash(git *)"
+          },
+          {
+            "type": "command",
             "command": ".claude/hooks/block-dangerous.sh"
           },
           {
             "type": "command",
             "command": ".claude/hooks/secret-scan.sh"
+          }
+        ]
+      },
+      {
+        "matcher": "PowerShell",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node .claude/hooks/confirm-git-commit-push.cjs",
+            "if": "PowerShell(git *)"
           }
         ]
       }
@@ -33,6 +48,14 @@
           },
           {
             "type": "command",
+            "command": ".claude/hooks/roadmap-reminder-after-change.sh"
+          },
+          {
+            "type": "command",
+            "command": "node .claude/hooks/changelog-reminder-after-change.cjs"
+          },
+          {
+            "type": "command",
             "command": ".claude/hooks/public-tone-guard.sh"
           }
         ]
@@ -48,6 +71,14 @@
           }
         ]
       }
+    ]
+  },
+  "permissions": {
+    "ask": [
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "PowerShell(git commit *)",
+      "PowerShell(git push *)"
     ]
   }
 }

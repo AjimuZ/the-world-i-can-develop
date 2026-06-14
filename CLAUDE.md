@@ -14,6 +14,7 @@
 - Keep the project local-first. Avoid mandatory cloud dependencies for the MVP.
 - Work in small, testable, reviewable micro-phases.
 - Do not run destructive commands such as hard resets, forced cleans, or broad deletes.
+- Do not run `git commit` or `git push` autonomously. Prepare clear commit message suggestions and wait for explicit manual approval.
 - Do not push directly to `main` or `master`.
 - Always separate AI-generated narrative from deterministic game state.
 - Update docs when changing architecture, gameplay rules, Rune, Lyra, AI orchestration, memory, or public presentation.
