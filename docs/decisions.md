@@ -7,7 +7,8 @@
 | Genre | Local-first AI-driven fantasy text RPG | Confirmed |
 | Core mechanic | Rune, a divine pseudocode-based magic system | Confirmed |
 | Divine assistant | Lyra | Confirmed |
-| Frontend | Angular (standalone components + signals) + TypeScript | Confirmed |
+| Frontend | Angular 22 (standalone components + signals, zoneless) + TypeScript + SCSS | Confirmed |
+| Frontend test runner | Vitest (Angular CLI 22 default) | Confirmed |
 | Backend | Spring Boot + Java 21 LTS | Confirmed |
 | Java build tool | Maven | Confirmed |
 | Database | PostgreSQL | Confirmed |

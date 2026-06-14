@@ -10,3 +10,4 @@ All notable changes to this project will be documented in this file.
 - Reconcile roadmaps into a single canonical `docs/development-roadmap.md`.
 - Pin toolchain versions (Java 21 LTS, Maven, Angular standalone + signals, MIT) in `docs/decisions.md` and new ADR 0005.
 - Adopt a single-branch workflow; drop per-phase branches in the roadmap, `CLAUDE.md`, and `docs/analysis.md`.
+- Scaffold the Angular 22 frontend workspace under `frontend/` (standalone components, signals, zoneless change detection, SCSS, Vitest).

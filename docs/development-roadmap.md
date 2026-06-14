@@ -36,7 +36,7 @@ in `analysis.md §13.2`).
 | P0 | Repository and Claude Code setup | ✅ Done |
 | P1 | Repository hygiene baseline | ✅ Done |
 | P2 | Reconcile roadmap and pin toolchain | ✅ Done |
-| P3 | Angular app scaffold | Frontend |
+| P3 | Angular app scaffold | ✅ Done |
 | P4 | RPG layout placeholder panels | Frontend |
 | P5 | Spring Boot scaffold and health endpoint | Backend |
 | P6 | Connect frontend to backend (integration smoke) | Integration |
@@ -162,6 +162,11 @@ passes the default test suite.
 - `npm run build` produces a `dist/` folder (excluded by `.gitignore`).
 - `npm start` shows the default Angular page in the browser.
 - `npm test` runs green (default Karma or Jest spec).
+
+**Status:** ✅ Done — Angular 22 workspace scaffolded under `frontend/` with
+standalone components, signals, zoneless change detection (no `zone.js`), SCSS,
+and routing. The default test runner is Vitest (Angular CLI 22 default), not
+Karma. `npm run build` produces `dist/`; the default spec passes (2/2).
 
 **Suggested commit message:** `Set up Angular app shell`
 
